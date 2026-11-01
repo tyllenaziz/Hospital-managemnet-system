@@ -1,0 +1,2 @@
+ALTER TABLE sales ADD COLUMN hospital_id INT DEFAULT NULL;
+ALTER TABLE sales ADD CONSTRAINT fk_sales_hospital FOREIGN KEY (hospital_id) REFERENCES hospitals(id) ON DELETE SET NULL;

@@ -1,0 +1,14 @@
+const router = require('express').Router();
+const controller = require('../controllers/internalManagementController');
+router.use(require('../middlewares/managementServiceAuth'));
+router.get('/summary', controller.summary);
+router.get('/analytics', controller.analytics);
+router.get('/users', controller.users);
+router.get('/users/:id', controller.user);
+router.get('/revenue', controller.revenue);
+router.get('/revenue/timeseries', controller.revenueTimeseries);
+router.get('/subscriptions', controller.subscriptions);
+router.get('/transactions', controller.transactions);
+router.get('/activity', controller.activity);
+router.get('/health', controller.health);
+module.exports = router;

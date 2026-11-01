@@ -1,0 +1,65 @@
+{
+  "name": "bensmma-hospital-management",
+  "version": "1.0.0",
+  "description": "Hospital Management System",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "pnpm -C frontend run build",
+    "build-frontend": "cd frontend && npm run build",
+    "dist": "npm run build-frontend && electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "test": "npm --prefix backend test",
+    "test:run": "npm --prefix backend run test:run"
+  },
+  "build": {
+    "appId": "com.bensmma.hms",
+    "productName": "Bensmma Hospital Management",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "frontend/dist/**/*",
+      "Localbridge/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assests/logo.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Bensmma Hospital Management"
+    },
+    "extraResources": [
+      {
+        "from": "localbridge.exe",
+        "to": "localbridge.exe"
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron": "^38.2.2",
+    "electron-builder": "^26.0.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mwantech/BensmmaHospitalSystem.git"
+  },
+  "keywords": [
+    "hospital",
+    "management",
+    "electron"
+  ],
+  "author": "NextVijo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mwantech/BensmmaHospitalSystem/issues"
+  },
+  "homepage": "https://github.com/Mwantech/BensmmaHospitalSystem#readme"
+}
